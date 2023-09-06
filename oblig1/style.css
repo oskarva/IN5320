@@ -66,6 +66,12 @@
     }
 }
 
+@media (max-width: 360px) {
+    .project{
+        flex: 1 0 80%;
+    }
+}
+
 #work-experience {
     text-align: center;
 }
