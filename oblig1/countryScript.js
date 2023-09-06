@@ -51,20 +51,28 @@ function deleteElement(countryId){
 
 function searchForCountries(){
     let searchBar = document.getElementById("search-bar");
-    let searchText = searchBar.value; //TODO: Does this get the text?
+    let searchText = searchBar.value; 
     searchText = searchText.toLowerCase();
     if (searchText.length == 0){
-        return;
+        return; //TODO: call showAll
     };
 
-    
-    //Get text from all li elements
-    //make dict["text":li element]
-    //hide li elements
+    let targets = document.querySelectorAll("ul#country-list li");
+    let dict = {}
+    targets.forEach(function(li){
+        let liText = li.innerHTML.split("<")[0];
+        dict[liText] = li
+        li.remove();
+    });
 
-    //checkArrayFo...
+    let countriesToShow = checkArrayForSearchWord(Object.keys(dict), searchText);
+    console.log(countriesToShow);
 
-    //hide li-elements not in list
+    countriesToShow.forEach(function(toShow){ //TODO: display:none for items not in this list, instead of deleting items
+        console.log(toShow);
+        console.log(dict[toShow]);
+        document.getElementById("country-list").appendChild(dict[toShow]);
+    });
 };
 
 function checkArrayForSearchWord(ar, searchWord){
