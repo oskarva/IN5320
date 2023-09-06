@@ -2,6 +2,9 @@ window.onload = function(){
     const submitButton = document.getElementById("add");
     submitButton.onclick = submitFunction;
 
+    const searchBar = document.getElementById("search-bar");
+    searchBar.addEventListener("input", function(){searchForCountries()});
+
 }
 
 function submitFunction(){
@@ -46,6 +49,24 @@ function deleteElement(countryId){
     document.getElementById("country-list").removeChild(listItem); //replace with listItem.remove();?
 };
 
+function searchForCountries(){
+    let searchBar = document.getElementById("search-bar");
+    let searchText = searchBar.value; //TODO: Does this get the text?
+    searchText = searchText.toLowerCase();
+    if (searchText.length == 0){
+        return;
+    };
+
+    
+    //Get text from all li elements
+    //make dict["text":li element]
+    //hide li elements
+
+    //checkArrayFo...
+
+    //hide li-elements not in list
+};
+
 function checkArrayForSearchWord(ar, searchWord){
     let newAr = [];
 
@@ -61,3 +82,5 @@ function checkArrayForSearchWord(ar, searchWord){
 function checkElementForSearchWord(element, searchWord){
     return element.startsWith(searchWord); //element.value instead?
 };
+
+//onchange
