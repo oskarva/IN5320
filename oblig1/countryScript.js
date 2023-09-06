@@ -53,7 +53,7 @@ function searchForCountries(){
     let searchBar = document.getElementById("search-bar");
     let searchText = searchBar.value; 
     searchText = searchText.toLowerCase();
-    if (searchText.trim().length == 0){
+    if (searchText.length == 0){
         showAll();
         return;
     };
@@ -62,7 +62,8 @@ function searchForCountries(){
     let dict = {}
     targets.forEach(function(li){
         let liText = li.innerHTML.split("<")[0];
-        dict[liText] = li
+        dict[liText.toLowerCase()] = li;
+        console.log(liText);
         li.style.display = "none";
     });
 
