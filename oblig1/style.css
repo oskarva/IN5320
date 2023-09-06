@@ -12,7 +12,7 @@
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    grid-gap: 1.0rem 0.5rem;
+    grid-gap: 0rem 0.5rem;
     text-align: center;
 }
 
@@ -22,6 +22,7 @@
 }
 
 #picture-of-oskar {
+    width: 50%;
     grid-row: 2;
     grid-column: 1 / 2;
 }
@@ -52,12 +53,19 @@
 }
 
 .project {
-    flex: 1 0 33%;
+    flex: 1 0 30%;
     text-align: center;
+    border: solid 1px black;
+    margin: 0.25em;
+    height: 150px;
 }
 
 @media (max-width: 600px) {
     .project{
-        flex: 1 0 50%;
+        flex: 1 0 40%;
     }
+}
+
+#work-experience {
+    text-align: center;
 }
