@@ -69,3 +69,8 @@
 #work-experience {
     text-align: center;
 }
+
+.job {
+    border: solid 1px black;
+    margin-bottom: 1%;
+}
