@@ -38,13 +38,26 @@ function getDeleteButton(countryName){
     deleteButton.setAttribute("class", "delete-button"); 
     deleteButton.addEventListener("click", function(){deleteElement(countryName)});
 
-
     return deleteButton;
 };
 
 function deleteElement(countryId){
-    console.log(countryId);
     let listItem = document.getElementById(countryId);
-    console.log(listItem);
-    document.getElementById("country-list").removeChild(listItem);
+    document.getElementById("country-list").removeChild(listItem); //replace with listItem.remove();?
+};
+
+function checkArrayForSearchWord(ar, searchWord){
+    let newAr = [];
+
+    for(let i = 0; i < ar.length; i++){
+        if (checkElementForSearchWord(ar[i], searchWord)){
+            newAr.push(ar[i]);
+        };
+    };
+
+    return newAr;
+};
+
+function checkElementForSearchWord(element, searchWord){
+    return element.startsWith(searchWord); //element.value instead?
 };
