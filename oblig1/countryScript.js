@@ -18,11 +18,33 @@ function submitFunction(){
 };
 
 function getCountryElement(countryName){
-    
+
 
     let li = document.createElement("li");
-    li.value = countryName;
     li.appendChild(document.createTextNode(countryName));
-    li.setAttribute("class", "country-list-element")
+
+    let deleteButton = getDeleteButton(countryName);
+    li.appendChild(deleteButton);
+
+    li.setAttribute("class", "country-list-element");
+    li.setAttribute("id", countryName)
     return li
+};
+
+function getDeleteButton(countryName){
+    let deleteButton = document.createElement("button");
+    
+    deleteButton.appendChild(document.createTextNode("X"));
+    deleteButton.setAttribute("class", "delete-button"); 
+    deleteButton.addEventListener("click", function(){deleteElement(countryName)});
+
+
+    return deleteButton;
+};
+
+function deleteElement(countryId){
+    console.log(countryId);
+    let listItem = document.getElementById(countryId);
+    console.log(listItem);
+    document.getElementById("country-list").removeChild(listItem);
 };
