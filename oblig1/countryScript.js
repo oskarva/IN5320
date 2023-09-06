@@ -53,8 +53,9 @@ function searchForCountries(){
     let searchBar = document.getElementById("search-bar");
     let searchText = searchBar.value; 
     searchText = searchText.toLowerCase();
-    if (searchText.length == 0){
-        return; //TODO: call showAll
+    if (searchText.trim().length == 0){
+        showAll();
+        return;
     };
 
     let targets = document.querySelectorAll("ul#country-list li");
@@ -62,16 +63,20 @@ function searchForCountries(){
     targets.forEach(function(li){
         let liText = li.innerHTML.split("<")[0];
         dict[liText] = li
-        li.remove();
+        li.style.display = "none";
     });
 
     let countriesToShow = checkArrayForSearchWord(Object.keys(dict), searchText);
-    console.log(countriesToShow);
 
-    countriesToShow.forEach(function(toShow){ //TODO: display:none for items not in this list, instead of deleting items
-        console.log(toShow);
-        console.log(dict[toShow]);
-        document.getElementById("country-list").appendChild(dict[toShow]);
+    countriesToShow.forEach(function(toShow){
+        dict[toShow].style.display = null;
+    });
+};
+
+function showAll(){
+    let targets = document.querySelectorAll("ul#country-list li");
+    targets.forEach(function(li){
+        li.style.display = null;
     });
 };
 
@@ -88,7 +93,5 @@ function checkArrayForSearchWord(ar, searchWord){
 };
 
 function checkElementForSearchWord(element, searchWord){
-    return element.startsWith(searchWord); //element.value instead?
+    return element.startsWith(searchWord); 
 };
-
-//onchange
