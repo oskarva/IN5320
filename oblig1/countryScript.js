@@ -59,19 +59,23 @@ function searchForCountries(){
     };
 
     let targets = document.querySelectorAll("ul#country-list li");
-    let dict = {}
+    let dict = {} 
     targets.forEach(function(li){
         let liText = li.innerHTML.split("<")[0];
-        dict[liText.toLowerCase()] = li;
+        dict[liText] = li;
         console.log(liText);
         li.style.display = "none";
     });
 
-    let countriesToShow = checkArrayForSearchWord(Object.keys(dict), searchText);
+    let countriesLowerCase = Object.keys(dict).map(item => item.toLowerCase())
+    let countriesToShow = checkArrayForSearchWord(countriesLowerCase, searchText);
 
-    countriesToShow.forEach(function(toShow){
-        dict[toShow].style.display = null;
+    Object.keys(dict).forEach(function(key){
+        if(countriesToShow.includes(key.toLowerCase())){
+            dict[key].style.display = null;
+        };
     });
+
 };
 
 function showAll(){
