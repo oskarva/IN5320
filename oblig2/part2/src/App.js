@@ -55,7 +55,9 @@ function App() {
       <h1>Country lookup</h1>
       <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Table apiData={apiData} />
-      {dropdown}
+      Page {pageNumber} of {apiData.pager ? apiData.pager.pageCount : '...'}
+      <br/>
+      Results per page: {dropdown}
     </div>
   );
 }
