@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Table from "./Table.js";
+import Input from "./Input.js";
 
 function App() {
   /* Create state:
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <h1>Country lookup</h1>
+      <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Table apiData={apiData} />
     </div>
   );
