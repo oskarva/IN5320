@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <h1>Country lookup</h1>
-      <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} setPageNumber={setPageNumber}/>
       <Table apiData={apiData} />
       Page {pageNumber} of {apiData.pager ? apiData.pager.pageCount : '...'}
       {parseInt(pageNumber) != 1 ? <button onClick={() => setPageNumber(pageNumber - 1)}>⬅️</button> : ""}
