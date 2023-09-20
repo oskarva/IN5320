@@ -56,6 +56,8 @@ function App() {
       <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Table apiData={apiData} />
       Page {pageNumber} of {apiData.pager ? apiData.pager.pageCount : '...'}
+      {parseInt(pageNumber) != 1 ? <button onClick={() => setPageNumber(pageNumber - 1)}>⬅️</button> : ""}
+      <button onClick={() => setPageNumber(pageNumber + 1)}>➡️</button>
       <br/>
       Results per page: {dropdown}
     </div>
