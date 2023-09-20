@@ -13,6 +13,16 @@ function App() {
   const [apiData, setApiData] = useState([]);
   const [searchQuery, setSearchQuery] = useState(); // Default = No search query
   const [pageNumber, setPageNumber] = useState(1); //Default = Page 1
+  const [pageSize, setPageSize] = useState(10);
+
+  const dropdown = <select onChange={(x) => setPageSize(x.target.value)}>
+    <option value="10" >10</option>
+    <option value="20" >20</option>
+    <option value="30" >30</option>
+    <option value="40" >40</option>
+    <option value="50" >50</option>
+    <option value="100">100</option>
+  </select>;
 
   useEffect(() => {
     // All parameters are appended to this URL.
@@ -26,6 +36,9 @@ function App() {
     // Add what page we are requesting to the API request.
     apiQuery = apiQuery + "&page=" + pageNumber;
 
+    // Add the size of the pages
+    apiQuery = apiQuery + "&pageSize=" + pageSize;
+
     // Query data from API.
     console.log("Querying: " + apiQuery);
     fetch(apiQuery)
@@ -34,13 +47,15 @@ function App() {
         // Then add response to state.
         setApiData(data);
       });
-  }, [searchQuery, pageNumber]); // Array containing which state changes that should re-reun useEffect()
+  },
+  [searchQuery, pageNumber, pageSize]); // Array containing which state changes that should re-reun useEffect()
 
   return (
     <div className="App">
       <h1>Country lookup</h1>
       <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Table apiData={apiData} />
+      {dropdown}
     </div>
   );
 }
