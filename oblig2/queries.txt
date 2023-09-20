@@ -1,0 +1,11 @@
+1. https://dhis2-app-course.ifi.uio.no/api?search=a
+2. https://dhis2-app-course.ifi.uio.no/api?search=%20
+3. https://dhis2-app-course.ifi.uio.no/api?paging=false
+4. https://dhis2-app-course.ifi.uio.no/api?pageSize=20
+5. https://dhis2-app-course.ifi.uio.no/api?Country=Norway
+6. https://dhis2-app-course.ifi.uio.no/api?ContinentCode=AF
+7. https://dhis2-app-course.ifi.uio.no/api?ContinentCode=AF,SA,OC
+8. https://dhis2-app-course.ifi.uio.no/api?pageSize=25&order=Population:DESC
+9. https://dhis2-app-course.ifi.uio.no/api?order=PopulationGrowth:DESC&pageSize=10
+10. https://dhis2-app-course.ifi.uio.no/api?pageSize=5&page=2&sort=Population:DESC
+11. https://dhis2-app-course.ifi.uio.no/api?paging=false&search=ma&ContinentCode=NA,EU,AF&order=Population:ASC
