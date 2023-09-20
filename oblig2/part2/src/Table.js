@@ -1,5 +1,4 @@
 function Table(props) {
-  console.log(props.apiData);
 
   if (!props.apiData.results) {
     // If the API request isn't completed return "loading...""
