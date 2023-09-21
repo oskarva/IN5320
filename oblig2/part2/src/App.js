@@ -49,7 +49,7 @@ function App() {
       });
   },
   [searchQuery, pageNumber, pageSize]); // Array containing which state changes that should re-reun useEffect()
-
+//TODO: Make it so that the "next page" button disappears if user is on last page
   return (
     <div className="App">
       <h1>Country lookup</h1>
