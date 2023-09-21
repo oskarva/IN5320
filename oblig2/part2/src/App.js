@@ -15,7 +15,11 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1); //Default = Page 1
   const [pageSize, setPageSize] = useState(10);
 
-  const dropdown = <select onChange={(x) => setPageSize(x.target.value)}>
+
+  const dropdown = <select onChange={(x) => {
+      setPageSize(x.target.value);
+      setPageNumber(1); //Resets page numer to prevent error when pageNumber > pageCount after page resize
+  }}>
     <option value="10" >10</option>
     <option value="20" >20</option>
     <option value="30" >30</option>
@@ -49,15 +53,15 @@ function App() {
       });
   },
   [searchQuery, pageNumber, pageSize]); // Array containing which state changes that should re-reun useEffect()
-//TODO: Make it so that the "next page" button disappears if user is on last page
+
   return (
     <div className="App">
       <h1>Country lookup</h1>
       <Input searchQuery={searchQuery} setSearchQuery={setSearchQuery} setPageNumber={setPageNumber}/>
       <Table apiData={apiData} />
       Page {pageNumber} of {apiData.pager ? apiData.pager.pageCount : '...'}
-      {parseInt(pageNumber) != 1 ? <button onClick={() => setPageNumber(pageNumber - 1)}>⬅️</button> : ""}
-      <button onClick={() => setPageNumber(pageNumber + 1)}>➡️</button>
+      {parseInt(pageNumber) !== 1 ? <button onClick={() => setPageNumber(pageNumber - 1)}>⬅️</button> : ""}
+      {apiData.pager ? ( parseInt(pageNumber) !== apiData.pager.pageCount ? <button onClick={() => setPageNumber(pageNumber + 1)}>➡️</button> : "") : ""}
       <br/>
       Results per page: {dropdown}
     </div>
