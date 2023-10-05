@@ -1,14 +1,22 @@
+import React from "react";
+import { useDataQuery } from '@dhis2/app-runtime';
+import { Menu, MenuItem } from '@dhis2/ui';
+
+
 const request = {
     request0: {
       resource: "/dataSets",
       params: {
-        fields: "id,displayName,created",
+        fields: ["id",
+        "displayName",
+        "created",
+        ],
         paging: "false"
       }
     }
   }
   
-  const sendRequest = () => {
+  export function Datasets() {
       const { loading, error, data } = useDataQuery(request)
       if (error) {
           return <span>ERROR: {error.message}</span>
@@ -20,6 +28,12 @@ const request = {
   
       if (data) {
          console.log("API response:",data)
-         //To-do: return a component using the data response 
+         return <><h3>Datasets:</h3>
+                <Menu>
+                {data.request0.dataSets.map((dp, index) => (
+                        <MenuItem key={index} label={dp.displayName} />
+                    ))}
+                </Menu>
+         </>
       }
   }
