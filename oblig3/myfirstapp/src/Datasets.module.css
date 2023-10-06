@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .menu-section, .table-section {
+    flex: 1;
+    padding: 10px;
+    overflow: auto;
+  }
