@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDataQuery } from '@dhis2/app-runtime';
-import { Menu, MenuItem } from '@dhis2/ui';
+import { Menu, MenuItem, Table, TableHead, TableRowHead, TableBody, TableRow, TableCell, TableCellHead } from '@dhis2/ui';
+import { DataTable } from "./DataTable.js"
 
 
 const request = {
@@ -17,6 +18,8 @@ const request = {
   }
   
   export function Datasets() {
+      const [currentID, setID] = useState("");
+
       const { loading, error, data } = useDataQuery(request)
       if (error) {
           return <span>ERROR: {error.message}</span>
@@ -31,9 +34,14 @@ const request = {
          return <><h3>Datasets:</h3>
                 <Menu>
                 {data.request0.dataSets.map((dp, index) => (
-                        <MenuItem key={index} label={dp.displayName} />
+                        <MenuItem key={index} 
+                        label={dp.displayName} 
+                        onclick={() => setID(dp.id)} >
+                          
+                        </MenuItem>
                     ))}
                 </Menu>
+                <DataTable  currentID={currentID} />
          </>
       }
   }
