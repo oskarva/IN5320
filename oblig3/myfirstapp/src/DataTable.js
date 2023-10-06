@@ -1,7 +1,7 @@
-import { styleClasses } from "./DataTable.module.css";
 import { useEffect, useState, useMemo } from "react";
 import { useDataQuery } from '@dhis2/app-runtime';
 import { Menu, MenuItem, Table, TableHead, TableRowHead, TableBody, TableRow, TableCell, TableCellHead } from '@dhis2/ui';
+import styles from './DataTable.module.css';
 
 
 export function DataTable(props){
@@ -30,7 +30,7 @@ export function DataTable(props){
     //}
 
     return <>
-        <div >
+        <div className={props.currentID === props.id ? styles.visible : styles.hidden}>
             <Table >
               <TableHead>
                 <TableRowHead>
