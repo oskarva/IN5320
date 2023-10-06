@@ -36,8 +36,7 @@ const request = {
                 {data.request0.dataSets.map((dp, index) => (
                         <MenuItem key={index} 
                         label={dp.displayName} 
-                        onclick={() => setID(dp.id)} >
-                          
+                        onClick={() => setID(dp.id)} >
                         </MenuItem>
                     ))}
                 </Menu>

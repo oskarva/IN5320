@@ -4,27 +4,14 @@ import { useDataQuery } from '@dhis2/app-runtime';
 import { Menu, MenuItem, Table, TableHead, TableRowHead, TableBody, TableRow, TableCell, TableCellHead } from '@dhis2/ui';
 
 
-function request(id) {
-    return {request0: {
-      resource: "/dataSets",
-      params: {
-        fields: "id,displayName,created",
-        paging: "false",
-        filter: "id:eq:" + {id},
-      },
-    }
-  };}
-  
-
 export function DataTable(props){
     const query = useMemo(() => {
         return {
-          request0: {
-            resource: "/dataSets",
+          request1: {
+            resource: `/dataSets/${props.currentID}`,
             params: {
-              fields: "id,displayName,created",
+              //fields: "id,displayName,created",
               paging: "false",
-              filter: `id:eq:${props.currentID}`, // Note the template string
             },
           }
         };
@@ -32,14 +19,16 @@ export function DataTable(props){
     //const newID = props.id;
 
     //newData = useDataQuery(request(props.currentID));
-    const { loading, error, data } = useDataQuery(query);
+    var { loading, error, data } = useDataQuery(query);
 
     useEffect(() => {
 
         console.log("new:" + props.currentID);
+
         console.log(data);
+        console.log(query);
         console.log("stop");
-    }, [props.currentID, data]);
+    }, [props.currentID]);
 
     if (error) {
         console.log(error);
