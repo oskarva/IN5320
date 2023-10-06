@@ -40,7 +40,9 @@ const request = {
                         </MenuItem>
                     ))}
                 </Menu>
-                <DataTable  currentID={currentID} />
+                {data.request0.dataSets.map((dp, index) => (
+                <DataTable  currentID={currentID} id={dp.id} displayName={dp.displayName} created={dp.created} />
+                ))}
          </>
       }
   }
